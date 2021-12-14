@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('post')->group(function() {
+    Route::get('create', 'App\Http\Controllers\PostController@create')->name('post.create');
+    Route::post('store/{postarAgora?}', 'App\Http\Controllers\PostController@store')->name('post.store');
+    Route::post('image-upload', 'App\Http\Controllers\PostController@imageUpload')->name('post.image-upload');
 });
