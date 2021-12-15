@@ -36,6 +36,26 @@ class PostController extends Controller
         }
     }
 
+    public function edit($id) {
+        $post = $this->post->find($id);
+        if ($post) {
+            return view('admin.post-edit', ['post' => $post]);
+        }
+    }
+
+    public function update(Request $request, $id) {
+        $post = $this->post->find($id);
+        if ($post) {
+            $post->titulo = $request->input('titulo');
+            $post->conteudo = $request->input('wysiwyg-editor');
+            $post->edited_at = now();
+
+            $post->save();
+
+            return redirect()->route('post.show', ['id' => $id]);
+        }
+    }
+
     public function imageUpload(Request $request) {
         if ($request->hasFile('upload') && $request->file('upload')->isValid()) {
             $path = $request->file('upload')->store('images/posts', ['disk' => 'public']);
