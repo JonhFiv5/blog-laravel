@@ -10,6 +10,17 @@
         <form method="POST" action="{{route('post.store')}}" id="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
+                <div class="col form-group mb-2">
+                    <label for="titulo">Qual o título?</label>
+                    <input type="text" name="titulo" class="mr-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label for="wysiwyg-editor">Crie sua postagem abaixo:</label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col form-group">
                     <textarea name="wysiwyg-editor" class="ckeditor form-control"></textarea>
                 </div>

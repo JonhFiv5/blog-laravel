@@ -18,6 +18,7 @@ class PostController extends Controller
     }
 
     public function store(Request $request, bool $postarAgora = false) {
+        $dados['titulo'] = $request->input('titulo');
         $dados['conteudo'] = $request->input('wysiwyg-editor');
         $dados['visivel'] = $postarAgora;
         $dados['user_id'] = 1;

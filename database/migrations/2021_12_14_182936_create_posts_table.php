@@ -16,9 +16,11 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->text('titulo')->nullable(false);
             $table->text('conteudo')->nullable(false);
             $table->boolean('visivel')->default(false);
             $table->integer('visitas')->default(0);
+            $table->dateTime('edited_at')->default(now());
             $table->timestamps();
         });
 
