@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::prefix('post')->group(function() {
     Route::get('create', 'App\Http\Controllers\PostController@create')->name('post.create');
+    Route::get('show/{id}', 'App\Http\Controllers\PostController@show')->name('post.show');
     Route::post('store/{postarAgora?}', 'App\Http\Controllers\PostController@store')->name('post.store');
     Route::post('image-upload', 'App\Http\Controllers\PostController@imageUpload')->name('post.image-upload');
 });

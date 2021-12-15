@@ -22,7 +22,7 @@
             </div>
         </form>
     </div>
-@stop
+@endsection
 
 @section('scripts')
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
@@ -37,4 +37,4 @@
             form.submit();
         }
     </script>
-@stop
+@endsection
