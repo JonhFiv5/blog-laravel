@@ -13,6 +13,11 @@ class PostController extends Controller
         $this->post = $post;
     }
 
+    public function index() {
+        $posts = $this->post->paginate(2);
+        return view('site.index', ['posts' => $posts]);
+    }
+
     public function create() {
         return view('admin.post-create');
     }
