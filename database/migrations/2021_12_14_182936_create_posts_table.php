@@ -16,7 +16,9 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable(false);
-            $table->text('titulo')->nullable(false);
+            $table->string('titulo')->nullable(false);
+            $table->string('descricao')->nullable(false);
+            $table->string('imagem_capa')->nullable(false);
             $table->text('conteudo')->nullable(false);
             $table->boolean('visivel')->default(false);
             $table->integer('visitas')->default(0);

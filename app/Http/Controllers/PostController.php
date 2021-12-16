@@ -24,9 +24,15 @@ class PostController extends Controller
 
     public function store(Request $request, bool $postarAgora = false) {
         $dados['titulo'] = $request->input('titulo');
+        $dados['descricao'] = $request->input('descricao');
         $dados['conteudo'] = $request->input('wysiwyg-editor');
         $dados['visivel'] = $postarAgora;
         $dados['user_id'] = 1;
+
+        if($request->hasFile('imagem_capa') && $request->file('imagem_capa')->isValid()) {
+            $path = $request->file('imagem_capa')->store('images/posts', ['disk' => 'public']);
+            $dados['imagem_capa'] = $path;
+        }
 
         $this->post->create($dados);
 
@@ -52,8 +58,15 @@ class PostController extends Controller
         $post = $this->post->find($id);
         if ($post) {
             $post->titulo = $request->input('titulo');
+            $post->descricao = $request->input('descricao');
             $post->conteudo = $request->input('wysiwyg-editor');
             $post->edited_at = now();
+
+            if($request->hasFile('imagem_capa') && $request->file('imagem_capa')->isValid()) {
+                $path = $request->file('imagem_capa')->store('images/posts', ['disk' => 'public']);
+                Storage::disk('public')->delete($post->imagem_capa);
+                $post->imagem_capa = $path;
+            }
 
             $post->save();
 
@@ -61,6 +74,7 @@ class PostController extends Controller
         }
     }
 
+    // Função utilizada para upload de imagens no CKEditor
     public function imageUpload(Request $request) {
         if ($request->hasFile('upload') && $request->file('upload')->isValid()) {
             $path = $request->file('upload')->store('images/posts', ['disk' => 'public']);

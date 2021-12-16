@@ -5,7 +5,9 @@
     @foreach ($posts as $post)
         <div class="row border border-primary">
             <div class="col">
-                {!!$post->conteudo!!}
+                <h2>{{$post->titulo}}</h2>
+                <h3>{{$post->descricao}}</h3>
+                <img src="{{asset('storage/' . $post->imagem_capa)}}" alt="" width="200" height="auto">
             </div>
         </div>
     @endforeach
