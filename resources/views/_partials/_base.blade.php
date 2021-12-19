@@ -9,6 +9,7 @@
         @yield('imports')
     </head>
     <body>
+        @include('_partials._nav-bar')
         <div class="container">
             @yield('content')
         </div>
