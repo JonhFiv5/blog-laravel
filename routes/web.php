@@ -14,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\PostController@index')->name('post.index');
 
 Route::prefix('post')->group(function() {
-    Route::get('index', 'App\Http\Controllers\PostController@index')->name('post.index');
     Route::get('create', 'App\Http\Controllers\PostController@create')->name('post.create');
     Route::get('show/{id}', 'App\Http\Controllers\PostController@show')->name('post.show');
     Route::get('edit/{id}', 'App\Http\Controllers\PostController@edit')->name('post.edit');

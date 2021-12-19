@@ -1,0 +1,5 @@
+.post-zoom-hover:hover {
+    background-color: rgba(0, 0, 0, 0.055);
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    transform: scale(1.1);
+}
