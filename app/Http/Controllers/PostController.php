@@ -14,7 +14,7 @@ class PostController extends Controller
     }
 
     public function index() {
-        $posts = $this->post->paginate(9);
+        $posts = $this->post->where('visivel', true)->orderBy('edited_at', 'desc')->paginate(9);
         return view('site.index', ['posts' => $posts]);
     }
 

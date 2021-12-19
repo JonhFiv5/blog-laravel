@@ -16,7 +16,7 @@
                     <h5 class="card-title">{{$post->titulo}}</h5>
                     <p class="card-text">
                         <small class="text-muted d-block">Por: {{$post->user->name}}</small>
-                        <small class="text-muted">Em: {{date('d/m/Y h:m:s', strtotime($post->edited_at))}}</small>
+                        <small class="text-muted">Em: {{$post->edited_at}}</small>
                     </p>
                     <p class="card-text">{{$post->descricao}}</p>
                 </div>

@@ -7,7 +7,7 @@
         <div class="col text-end">Página visitada {{ $post->visitas }} vezes.</div>
     </div>
     <div class="row">
-        <div class="col">Última atualização: {{ date('d/m/Y h:m:s', strtotime($post->edited_at)) }}.</div>
+        <div class="col">Última atualização: {{ $post->edited_at }}.</div>
     </div>
     <hr>
     {!! $post->conteudo !!}
