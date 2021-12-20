@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col">Postagem feita por {{ $post->user->name }}.</div>
+        <div class="col">Postagem feita por <a href="{{route('post.index-autor', ['id' => $post->user_id])}}">{{ $post->user->name }}</a>.</div>
         <div class="col text-end">Página visitada {{ $post->visitas }} vezes.</div>
     </div>
     <div class="row">

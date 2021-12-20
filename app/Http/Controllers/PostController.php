@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,16 @@ class PostController extends Controller
     public function index() {
         $posts = $this->post->where('visivel', true)->orderBy('edited_at', 'desc')->paginate(9);
         return view('site.index', ['posts' => $posts]);
+    }
+
+    public function indexAutor($id) {
+        $autor = User::find($id)->name;
+        $posts = $this->post
+                    ->where('visivel', true)
+                    ->where('user_id', $id)
+                    ->orderBy('edited_at', 'desc')
+                    ->paginate(9);
+        return view('site.index-autor', ['autor' => $autor, 'posts' => $posts]);
     }
 
     public function create() {

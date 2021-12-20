@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\PostController@index')->name('post.index');
+Route::get('autor/{id}', 'App\Http\Controllers\PostController@indexAutor')->name('post.index-autor');
 
 Route::prefix('post')->group(function() {
     Route::get('create', 'App\Http\Controllers\PostController@create')->name('post.create');
