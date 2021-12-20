@@ -27,8 +27,8 @@ class PostController extends Controller
         $dados['descricao'] = $request->input('descricao');
         $dados['conteudo'] = $request->input('wysiwyg-editor');
         $dados['visivel'] = $postarAgora;
-        $dados['user_id'] = 1;
-
+        $dados['user_id'] = auth()->user()->id;
+        $dados['edited_at'] = now();
         if($request->hasFile('imagem_capa') && $request->file('imagem_capa')->isValid()) {
             $path = $request->file('imagem_capa')->store('images/posts', ['disk' => 'public']);
             $dados['imagem_capa'] = $path;
@@ -36,7 +36,7 @@ class PostController extends Controller
 
         $this->post->create($dados);
 
-        return 'Salvo, maninho';
+        return redirect()->route('post.index');
     }
 
     public function show($id) {
