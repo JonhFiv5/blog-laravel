@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Routing\RouteGroup;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,6 @@ Route::prefix('post')->group(function() {
     Route::post('store/{postarAgora?}', 'App\Http\Controllers\PostController@store')->name('post.store');
     Route::post('image-upload', 'App\Http\Controllers\PostController@imageUpload')->name('post.image-upload');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
