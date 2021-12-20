@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Post;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,8 +13,13 @@ class PostController extends Controller
         $this->post = $post;
     }
 
-    public function index() {
+    public function index(Request $request) {
         $posts = $this->post->where('visivel', true)->orderBy('edited_at', 'desc')->paginate(9);
+
+        if ($request->session()->has('error')) {
+            Alert::warning('Atenção', $request->session()->get('error'));
+        }
+
         return view('site.index', ['posts' => $posts]);
     }
 
@@ -60,6 +64,9 @@ class PostController extends Controller
 
     public function edit($id) {
         $post = $this->post->find($id);
+        if (auth()->user()->id != $post->user_id) {
+            return redirect()->route('post.index')->with('error', 'Acesso Negado!');
+        }
         if ($post) {
             return view('admin.post-edit', ['post' => $post]);
         }
@@ -67,6 +74,12 @@ class PostController extends Controller
 
     public function update(Request $request, $id) {
         $post = $this->post->find($id);
+        if (auth()->user()->id != $post->user_id) {
+            return redirect()->route('post.index')->with('error', 'Acesso Negado!');
+        }
+        if (auth()->user()->id != $post->user_id) {
+            
+        }
         if ($post) {
             $post->titulo = $request->input('titulo');
             $post->descricao = $request->input('descricao');

@@ -21,7 +21,7 @@ Route::get('autor/{id}', 'App\Http\Controllers\PostController@indexAutor')->name
 Route::prefix('post')->group(function() {
     Route::get('create', 'App\Http\Controllers\PostController@create')->name('post.create');
     Route::get('show/{id}', 'App\Http\Controllers\PostController@show')->name('post.show');
-    Route::get('edit/{id}', 'App\Http\Controllers\PostController@edit')->name('post.edit');
+    Route::get('edit/{id}', 'App\Http\Controllers\PostController@edit')->middleware('auth')->name('post.edit');
     Route::post('update/{id}', 'App\Http\Controllers\PostController@update')->name('post.update');
     Route::post('store/{postarAgora?}', 'App\Http\Controllers\PostController@store')->name('post.store');
     Route::post('image-upload', 'App\Http\Controllers\PostController@imageUpload')->name('post.image-upload');

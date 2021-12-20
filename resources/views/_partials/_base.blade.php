@@ -14,6 +14,7 @@
         <div class="container">
             @yield('content')
         </div>
+        @include('sweetalert::alert')
     </body>
     <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('scripts')
