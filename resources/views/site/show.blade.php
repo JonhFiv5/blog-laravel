@@ -16,7 +16,7 @@
         @if (auth()->user()->id == $post->user->id)
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary">Editar Postagem</button>
+                    <a class="btn btn-primary" href="{{route('post.edit', ['id' => $post->id])}}">Editar Postagem</a>
                 </div>
             </div>
         @endif

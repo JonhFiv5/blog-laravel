@@ -71,6 +71,7 @@ class PostController extends Controller
             $post->titulo = $request->input('titulo');
             $post->descricao = $request->input('descricao');
             $post->conteudo = $request->input('wysiwyg-editor');
+            $post->visivel = $request->input('visivel') ? true : false;
             $post->edited_at = now();
 
             if($request->hasFile('imagem_capa') && $request->file('imagem_capa')->isValid()) {
