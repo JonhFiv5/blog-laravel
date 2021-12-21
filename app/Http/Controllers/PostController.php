@@ -106,4 +106,9 @@ class PostController extends Controller
             return Storage::url($path);
         }
     }
+
+    // Funções a respeito do dashboard
+    public function dashboard() {
+        return view('admin.dashboard');
+    }
 }

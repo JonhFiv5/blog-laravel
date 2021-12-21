@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\PostController@index')->name('post.index');
+Route::get('/dashboard', 'App\Http\Controllers\PostController@dashboard')->name('dashboard.index');
 Route::get('autor/{id}', 'App\Http\Controllers\PostController@indexAutor')->name('post.index-autor');
 
 Route::prefix('post')->group(function() {
