@@ -3,3 +3,11 @@
     box-shadow: 5px 6px 6px 2px #e9ecef;
     transform: scale(1.1);
 }
+
+#back-to-top {
+    display: none;
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+    opacity: 0.25;
+}
